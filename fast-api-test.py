@@ -44,7 +44,7 @@ def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
 
 
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: Item):
+@app.put("/items/{item_id}", response_model=Item)
+def update_item(item_id: int, item: Item) -> Item:
     print(item)
     return item
