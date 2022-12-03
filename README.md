@@ -1,12 +1,12 @@
 # FastAPI / Pydantic Testing
 
-Testing FastAPI with Pydantic
+Testing [FastAPI](https://fastapi.tiangolo.com/) with [Pydantic](https://pydantic-docs.helpmanual.io/)
 
 `fast-api-test.py` defines a class `Item`, a GET route for `/` and GET and PUT routes for `/items/{item_id}`
 
 Using Pydantic the json is automatically serialised to / from the `Item` type
 
-FastAPI also provides auto generated API documentation, try outh the PUT `/items/{item_id}` route to see this in action
+FastAPI also provides auto generated API documentation, try out the PUT `/items/{item_id}` route to see this in action
 
 ## To run
 ```bash
