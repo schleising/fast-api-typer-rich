@@ -17,10 +17,22 @@ class Thing(BaseModel):
             }
         }
 
-class Item(BaseModel):
+
+class ResponseItem(BaseModel):
     name: str
     price: float
     thing: Thing
+
+    class Config:
+        schema_extra = {
+            'example': {
+                'name': 'John',
+                'price': 77.54,
+                'thing': Thing.Config.schema_extra['example'],
+            }
+        }
+
+class Item(ResponseItem):
     is_offer: Union[bool, None] = None
 
     class Config:
@@ -44,7 +56,7 @@ def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
 
 
-@app.put("/items/{item_id}", response_model=Item)
-def update_item(item_id: int, item: Item) -> Item:
+@app.put("/items/{item_id}", response_model=ResponseItem)
+def update_item(item_id: int, item: Item):
     print(item)
     return item
